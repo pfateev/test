@@ -1,6 +1,6 @@
 import sys
 import os
-from github import Github
+from github import Github, GithubException
 from github import Auth
 import issue_poster
 from dotenv import load_dotenv
@@ -29,8 +29,9 @@ class TestIssuePoster(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             issue_poster.post_issue_comment(self.token, 'pfateev', 'test', self.issue_number, 'test.md')
 
-    # def test_false_issue():
-    #     pass
+    def test_invalid_issue(self):
+        with self.assertRaises(GithubException):
+            issue_poster.post_issue_comment(self.token, 'pfateev', 'test', 2, 'test.md')
     
     # def test_non_md_file():
     #     pass
