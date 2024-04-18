@@ -36,8 +36,8 @@ def post_issue_comment(token, repo_owner, repo_name, issue_number, file_path):
         file_path (str): The file path of the markdown file whose contents will be used for the comment.
 
     Raises:
-        ValueError: If the file specified by `file_path` is not a markdown file (i.e., does not have a '.md' extension).
-        FileNotFoundError: If the markdown file specified by `file_path` cannot be found.
+        ValueError: If the file specified by file_path is not a markdown file (i.e., does not have a '.md' extension).
+        FileNotFoundError: If the markdown file specified by file_path cannot be found.
         Exception: For other issues that occur while reading the file.
         GithubException: For exceptions raised by Github API
 
