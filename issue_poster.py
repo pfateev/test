@@ -15,10 +15,6 @@ def main():
     issue_number = int(sys.argv[1])
     file_path = sys.argv[2]
 
-    if get_file_extension(file_path) != '.md':
-        print("Usage: file_path must point to a .md file")
-        sys.exit(1)
-
     post_issue_comment(os.getenv('GITHUB_TOKEN'), repo_owner, repo_name, issue_number, file_path)
     
 
@@ -26,6 +22,9 @@ def get_file_extension(filename):
     return os.path.splitext(filename)[1]
 
 def post_issue_comment(token, repo_owner, repo_name, issue_number, file_path):
+    if get_file_extension(file_path) != '.md':
+        raise ValueError('Usage: file_path must point to a .md file')
+    
     auth = Auth.Token(token)
 
     g = Github(auth=auth)
