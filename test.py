@@ -19,15 +19,15 @@ class TestIssuePoster(unittest.TestCase):
         # get number of current comments
         issue = self.repo.get_issue(number=self.issue_number)
         currCount = issue.comments
-        issue_poster.post_issue_comment(self.token, 'pfateev', 'test', 1, 'cli/test.md')
         # perform add
+        issue_poster.post_issue_comment(self.token, 'pfateev', 'test', self.issue_number, 'cli/test.md')
         updatedIssue = self.repo.get_issue(number=self.issue_number)
         newCount = updatedIssue.comments
-        assert newCount - currCount == 1
-        # check to make sure comment was added
+        self.assertTrue(newCount - currCount == 1)
     
-    # def test_bad_filename():
-    #     pass
+    def test_bad_filename(self):
+        with self.assertRaises(FileNotFoundError):
+            issue_poster.post_issue_comment(self.token, 'pfateev', 'test', self.issue_number, 'test.md')
 
     # def test_false_issue():
     #     pass
