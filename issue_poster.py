@@ -48,6 +48,7 @@ def post_issue_comment(token, repo_owner, repo_name, issue_number, file_path):
     comment = issue.create_comment(markdown_content)
 
     print("Comment created: ", comment.html_url)
+    return
 
 if __name__ == "__main__":
     main()
