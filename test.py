@@ -33,8 +33,9 @@ class TestIssuePoster(unittest.TestCase):
         with self.assertRaises(GithubException):
             issue_poster.post_issue_comment(self.token, 'pfateev', 'test', 2, 'test.md')
     
-    # def test_non_md_file():
-    #     pass
+    def test_non_md_file(self):
+        with self.assertRaises(ValueError):
+            issue_poster.post_issue_comment(self.token, 'pfateev', 'test', 1, 'issue_poster.py')
 
 if __name__ == '__main__':
     unittest.main()
