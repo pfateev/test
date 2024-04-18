@@ -1,4 +1,3 @@
-Certainly! Here's a `.readme` file that provides an overview and instructions on how to use the provided script.
 # GitHub Issue Commenter
 
 This Python script allows users to automatically post comments to GitHub issues using the contents of a Markdown file. It leverages the GitHub API to access a specific repository and issue, and then posts the content of the provided Markdown file as a comment to the designated issue.
