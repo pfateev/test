@@ -40,10 +40,10 @@ def post_issue_comment(token, repo_owner, repo_name, issue_number, file_path):
             markdown_content = file.read()
     except FileNotFoundError:
         print("The specified file was not found.")
-        return
+        raise
     except Exception as e:
         print(f"An error occurred: {e}")
-        return
+        raise
 
     comment = issue.create_comment(markdown_content)
 
